@@ -2,6 +2,7 @@ html{
     text-align: center;
     width:100%;
     height:100%;
+    background-color: #fcecdd;
 }
 body{
     width:100%;
@@ -10,15 +11,28 @@ body{
     margin:0;
 }
 #canvas_container{
-    width: 90%;
+    width:90%;
     height:80%;
     margin:auto;
     border:black 5px solid;
     position: relative;
 }
 #canvas{
-    width: 100%;
+    width:100%;
     height:100%;
-    /* background-color:white; */
+    background-color:#ffc288;
     cursor:cell;
+}
+#clear_button{
+    text-decoration: none;
+    color:#fea82f;
+    font-family: roboto;
+    font-weight: bold;
+    font-size: 20px;
+    padding:10px 20px;
+    margin-top:15px;
+}
+#tools_bar{
+    display:inline-block;
+    width:100%;
 }

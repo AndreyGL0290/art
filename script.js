@@ -12,7 +12,7 @@ canvas.onmousedown = (e) => {
             context.fillStyle = color;
             context.fillRect(event.offsetX-brush_width/2, event.offsetY-brush_width/2, brush_width, brush_width);
         };
-    }, 50);
+    }, 1);
     context.fillStyle = color;
     context.fillRect(e.offsetX-brush_width/2, e.offsetY-brush_width/2, brush_width, brush_width);
     canvas.onmouseup = () => {
@@ -21,4 +21,9 @@ canvas.onmousedown = (e) => {
 };
 function clear(){
     context.clearRect(0,0,canvas.width, canvas.height);
+}
+
+// Выбираем цвет в popup'е
+function color_choose(){
+    document
 }
