@@ -1,3 +1,23 @@
-h1{
-    margin-left:47%;
+html{
+    text-align: center;
+    width:100%;
+    height:100%;
+}
+body{
+    width:100%;
+    height:100%;
+    padding:0;
+    margin:0;
+}
+#canvas_container{
+    width: 90%;
+    height:80%;
+    margin:auto;
+    border:black 5px solid;
+}
+.canvas{
+    width: 100%;
+    height:100%;
+    background-color:darkolivegreen;
+    cursor:cell;
 }
