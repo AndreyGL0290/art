@@ -7,6 +7,7 @@ canvas.width = canvas.clientWidth;
 canvas.height = canvas.clientHeight;
 //Добавляем функцию рисования
 canvas.onmousedown = (e) => {
+    color = document.getElementById("color").value;
     setTimeout(() => {
         canvas.onmousemove = (event) => {
             context.fillStyle = color;

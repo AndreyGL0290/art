@@ -29,10 +29,15 @@ body{
     font-family: roboto;
     font-weight: bold;
     font-size: 20px;
-    padding:10px 20px;
     margin-top:15px;
 }
 #tools_bar{
     display:inline-block;
     width:100%;
+}
+#marker_label{
+    color:#fea82f;
+    font-family: roboto;
+    font-weight: bold;
+    font-size: 20px;
 }

@@ -12,8 +12,16 @@
     <div id="canvas_container">
         <canvas id="canvas"></canvas>
     </div>
-    <div id="tolls_bar">
-        <a id="clear_button" href="javascript:clear();">Отчистить</a>
+    <div id="tools_bar">
+        <div style="display:inline-block;">
+            <div style="display:block; text-align: left;">
+                <span id="marker_label">Цвет маркера</span>
+            </div>
+            <input id="color" type="color">
+        </div>
+        <div style="display: inline-block;">
+            <a id="clear_button" href="javascript:clear();">Отчистить</a>
+        </div> 
     </div>
     <script src="script.js"></script>
 </body>
