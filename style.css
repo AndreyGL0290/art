@@ -10,6 +10,14 @@ body{
     padding:0;
     margin:0;
 }
+a{
+    color:#fea82f;
+    font-family: roboto;
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+}
+
 #canvas_container{
     width:90%;
     height:80%;
@@ -29,15 +37,7 @@ body{
     font-family: roboto;
     font-weight: bold;
     font-size: 20px;
-    margin-top:15px;
 }
 #tools_bar{
-    display:inline-block;
     width:100%;
-}
-#marker_label{
-    color:#fea82f;
-    font-family: roboto;
-    font-weight: bold;
-    font-size: 20px;
 }
