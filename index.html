@@ -15,12 +15,24 @@
     <div id="tools_bar">
         <div style="display:inline-block;">
             <div style="display:block; text-align: left;">
+                <a>Цвет фона</a>
+            </div>
+            <input id="background_color" type="color" value="#ffc288" onblur="bg_color()">
+        </div>
+        <div style="display:inline-block; margin-left: 20px;">
+            <div style="display:block; text-align: left;">
                 <a>Цвет маркера</a>
             </div>
             <input id="color" type="color">
         </div>
-        <a id="eraser" href="javascript:eraser();">Eraser</a>
-        <a id="clear_button" href="javascript:clear();">Отчистить</a>
+        <div style="display:inline-block; margin-left: 20px;">
+            <div style="display:block; text-align: left;">
+                <a>Толщина маркера</a>
+            </div>
+            <input id="marker_width" type="number" value=30 min="1" onblur="width_marker_correction()">
+        </div>
+        <a id="eraser" href="javascript:eraser();" style="margin-left: 20px;">Eraser</a>
+        <a id="clear_button" href="javascript:clear();" style="margin-left: 20px;">Отчистить</a>
     </div>
     <script src="script.js"></script>
 </body>
