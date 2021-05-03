@@ -1,4 +1,5 @@
 let canvas = document.getElementById("canvas");
+let bg = document.getElementById('background_color');
 let context = canvas.getContext("2d");
 let color = "black";
 let brush_width = document.getElementById("marker_width").value;
@@ -56,10 +57,12 @@ function eraser(){
 
 }
 
+bg.addEventListener('input', bg_color, false);
+
 // Меняем задний фон холста
 function bg_color(){
     document.getElementById("canvas").style.backgroundColor = document.getElementById("background_color").value;
-}
+};
 
 // Корректируем значение толщины маркера если оно неположительное
 function width_marker_correction(){
