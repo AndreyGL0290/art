@@ -14,26 +14,29 @@
     </div>
     <div id="tools_bar">
         <div style="display:inline-block;">
-            <div style="display:block; text-align: left;">
-                <a>Цвет фона</a>
-            </div>
+            <a style="display:block;">Цвет фона</a>
             <input id="background_color" type="color" value="#ffc288">
         </div>
         <div style="display:inline-block; margin-left: 20px;">
-            <div style="display:block; text-align: left;">
-                <a>Цвет маркера</a>
-            </div>
+            <a style="display:block;">Цвет маркера</a>
             <input id="color" type="color">
         </div>
         <div style="display:inline-block; margin-left: 20px;">
-            <div style="display:block; text-align: left;">
-                <a>Толщина маркера</a>
-            </div>
+            <a style="display:block;">Толщина маркера</a>
             <input id="marker_width" type="number" value=30 min="1" onblur="width_marker_correction()">
         </div>
-        <a id="eraser" href="javascript:eraser();" style="margin-left: 20px;">Eraser</a>
-        <a id="clear_button" href="javascript:clear();" style="margin-left: 20px;">Отчистить</a>
+        <div style="display:inline-block;">
+            <a id="eraser" href="javascript:eraser();" style="margin-left: 20px; display:block;">Eraser</a>
+            <div class="correction">g</div>
+        </div>
+        <div style="display:inline-block;">
+            <a id="clear_button" href="javascript:clear();" style="margin-left: 20px; display:inline-block;">Отчистить</a>
+            <div class="correction">g</div>
+        </div>
+        <div style="display:inline-block;">
+            <a download="myImage.jpg" id="save_button" href="" style="margin-left: 20px; display:inline-block;">Сохранить</a>
+            <div class="correction">g</div>
+        </div>
     </div>
     <script src="script.js"></script>
-</body>
 </html>

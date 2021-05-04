@@ -1,6 +1,17 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudiocode
+# Created by https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,text
+# Edit at https://www.toptal.com/developers/gitignore?templates=windows,visualstudiocode,text
+
+### Text ###
+*.doc
+*.docx
+*.log
+*.msg
+*.pages
+*.rtf
+*.txt
+*.wpd
+*.wps
 
 ### VisualStudioCode ###
 .vscode/*
@@ -39,4 +50,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode
+# End of https://www.toptal.com/developers/gitignore/api/windows,visualstudiocode,text
