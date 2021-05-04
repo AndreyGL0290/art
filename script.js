@@ -3,7 +3,7 @@ let bg = document.getElementById('background_color');
 let context = canvas.getContext("2d");
 let color = "black";
 let brush_width = document.getElementById("marker_width").value;
-let style = "Marker";
+let mode = "Marker";
 let correctarray = document.getElementsByClassName('correction');
 
 // Корректируем положение объектов на странице
@@ -23,30 +23,32 @@ context.fillRect(0, 0, canvas.width, canvas.height);
 // Добавляем функцию рисования на компьютере
 canvas.onmousedown = (e) => {
     // Выбираем режим рисования
-    style = document.getElementById("eraser").textContent;
+    mode = document.getElementById("eraser").textContent;
     // Выбираем цвет маркера
     color = document.getElementById("color").value;
     // Выбираем толщину маркера
     brush_width = document.getElementById("marker_width").value;
         canvas.onmousemove = (event) => {
-            // Режим ластика
-            if (style == "Eraser"){
+            // Режим маркера
+            if (mode == "Eraser"){
                 context.fillStyle = color;
                 context.fillRect(event.offsetX-brush_width/2, event.offsetY-brush_width/2, brush_width, brush_width);
             }
-            // Режим маркера
-            else if (style == "Marker"){
-                context.clearRect(event.offsetX-brush_width/2, event.offsetY-brush_width/2, brush_width, brush_width);
+            // Режим ластика
+            else if (mode == "Marker"){
+                context.fillStyle = bg.value;
+                context.fillRect(event.offsetX-brush_width/2, event.offsetY-brush_width/2, brush_width, brush_width);
             }
         };
-    // Режим ластика
-    if (style == "Eraser"){
+    // Режим маркера
+    if (mode == "Eraser"){
         context.fillStyle = color;
         context.fillRect(e.offsetX-brush_width/2, e.offsetY-brush_width/2, brush_width, brush_width);
     }
-    // Режим маркера
-    else if (style == "Marker"){
-        context.clearRect(e.offsetX-brush_width/2, e.offsetY-brush_width/2, brush_width, brush_width);
+    // Режим ластика
+    else if (mode == "Marker"){
+        context.fillStyle = bg.value;
+        context.fillRect(event.offsetX-brush_width/2, event.offsetY-brush_width/2, brush_width, brush_width);
     }
     canvas.onmouseup = () => {
         canvas.onmousemove = null;
@@ -62,10 +64,10 @@ function clear(){
 // Меняем режим рисования для понимания пользователя
 function eraser(){
     if (document.getElementById("eraser").textContent == "Eraser"){
-        style = document.getElementById("eraser").textContent = "Marker";
+        mode = document.getElementById("eraser").textContent = "Marker";
     }
     else{
-        style = document.getElementById("eraser").textContent = "Eraser";
+        mode = document.getElementById("eraser").textContent = "Eraser";
     }
 }
 
