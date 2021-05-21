@@ -65,7 +65,7 @@ if (display == 'Computer') {
 
 else if (display == 'Mobile') {
     alert('mobile');
-    canvas.ontouchstart = (e) => {
+    canvas.ontouchend = (e) => {
         console.log('working');
         // Режим маркера
         if (mode == "Eraser") {
