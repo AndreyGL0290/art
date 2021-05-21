@@ -34,6 +34,7 @@ input{
     position:relative;
 }
 #canvas{
+    touch-action: none;
     width:100%;
     height:100%;
     background-color:#ffc288;

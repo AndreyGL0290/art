@@ -75,7 +75,7 @@ else if (display == 'Mobile') {
         // Режим маркера
         if (mode == "Eraser") {
             context.fillStyle = color;
-            context.fillRect(e.touches[0].pageX - brush_width / 2, e.touches[0].pageY - brush_width / 2, brush_width, brush_width);
+            context.fillRect(e.touches[0].pageX, e.touches[0].pageY - brush_width / 2, brush_width, brush_width);
         }
         // Режим ластика
         else if (mode == "Marker") {
