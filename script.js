@@ -84,6 +84,12 @@ else if (display == 'Mobile') {
 
         }
         canvas.addEventListener('touchmove', canvas.touchmove = (event) => {
+            // Выбираем режим рисования
+            mode = document.getElementById("eraser").textContent;
+            // Выбираем цвет маркера
+            color = document.getElementById("color").value;
+            // Выбираем толщину маркера
+            brush_width = document.getElementById("marker_width").value;
             // Режим маркера
             if (mode == "Eraser") {
                 context.fillStyle = color;
