@@ -64,26 +64,23 @@ if (display == 'Computer') {
 }
 // Регестрация касания на сенсорном экране
 else if (display == 'Mobile') {
-    // context.fillStyle  = 'black';
-    // context.fillRect(625, 115, 30, 30);
-
     // Выбираем режим рисования
     mode = document.getElementById("eraser").textContent;
     // Выбираем цвет маркера
     color = document.getElementById("color").value;
     // Выбираем толщину маркера
     brush_width = document.getElementById("marker_width").value;
-
-    canvas.addEventListener('touchstart', canvas.touchstart = (e) => {
+    canvas.addEventListener('touchstart', touchstart = (e) => {
+        // console.log(e.touches[0])
         // Режим маркера
         if (mode == "Eraser") {
             context.fillStyle = color;
-            context.fillRect(e.touches[0].pageX - brush_width / 2, e.touches[0].pageY - brush_width / 2, brush_width, brush_width);
+            context.fillRect(e.touches[0].pageX * window.devicePixelRatio - brush_width / 2, e.touches[0].pageY * window.devicePixelRatio - brush_width / 2, brush_width, brush_width);
         }
         // Режим ластика
         else if (mode == "Marker") {
             context.fillStyle = bg.value;
-            context.fillRect(e.touches[0].pageX - brush_width / 2, e.touches[0].pageY - brush_width / 2, brush_width, brush_width);
+            context.fillRect(e.touches[0].pageX * window.devicePixelRatio - brush_width / 2, e.touches[0].pageY * window.devicePixelRatio - brush_width / 2, brush_width, brush_width);
         
         }
         canvas.addEventListener('touchmove', canvas.touchmove = (event) => {
