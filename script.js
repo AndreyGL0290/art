@@ -64,6 +64,7 @@ if (display == 'Computer') {
 }
 
 else if (display == 'Mobile') {
+    alert('mobile');
     canvas.ontouchstart = (e) => {
         console.log('working');
         // Режим маркера
