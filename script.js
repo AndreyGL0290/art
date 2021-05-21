@@ -68,11 +68,13 @@ else if (display == 'Mobile') {
     canvas.addEventListener('touchstart', canvas.touchstart = (e) => {
         // Выбираем режим рисования
         mode = document.getElementById("eraser").textContent;
+        // Выбираем цвет маркера
+        color = document.getElementById("color").value;
         // Выбираем толщину маркера
         brush_width = document.getElementById("marker_width").value;
         // Режим маркера
         if (mode == "Eraser") {
-            context.fillStyle = document.getElementById("color").value;
+            context.fillStyle = color;
             context.fillRect(e.touches[0].pageX - canvas.getBoundingClientRect().left - brush_width / 2, e.touches[0].pageY - canvas.getBoundingClientRect().top - brush_width / 2, brush_width, brush_width);
         }
         // Режим ластика
@@ -84,7 +86,7 @@ else if (display == 'Mobile') {
         canvas.addEventListener('touchmove', canvas.touchmove = (event) => {
             // Режим маркера
             if (mode == "Eraser") {
-                context.fillStyle = document.getElementById("color").value;;
+                context.fillStyle = color;
                 context.fillRect(event.touches[0].pageX - canvas.getBoundingClientRect().left - brush_width / 2, event.touches[0].pageY - canvas.getBoundingClientRect().top - brush_width / 2, brush_width, brush_width);
             }
             // Режим ластика
