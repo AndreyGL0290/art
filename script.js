@@ -62,10 +62,10 @@ if (display == 'Computer') {
         };
     };
 }
-
+// Регестрация касания на сенсорном экране
 else if (display == 'Mobile') {
     alert('mobile');
-    canvas.ontouchend = (e) => {
+    canvas.addEventListener('touchstart', touchstart = (e) => {
         console.log('working');
         // Режим маркера
         if (mode == "Eraser") {
@@ -78,7 +78,7 @@ else if (display == 'Mobile') {
             context.fillRect(e.offsetX - brush_width / 2, e.offsetY - brush_width / 2, brush_width, brush_width);
         
         }
-        canvas.ontouchmove = (event) => {
+        canvas.addEventListener('touchmove', touchmove = (event) => {
             // Режим маркера
             if (mode == "Eraser") {
                 context.fillStyle = color;
@@ -89,11 +89,11 @@ else if (display == 'Mobile') {
                 context.fillStyle = bg.value;
                 context.fillRect(event.offsetX - brush_width / 2, event.offsetY - brush_width / 2, brush_width, brush_width);
             }
-        };
-        canvas.ontouchend = () => {
-            canvas.onmousemove = null;
-        };
-    }
+        }, false);
+        canvas.addeventlistener('touchend', touchend = () => {
+            canvas.addEventListener('touchmove', touchmove = null, false);
+        }, false);
+    }, false)
 }
 // Отчистка холста
 function clear() {
@@ -113,22 +113,6 @@ function eraser() {
 
 // Делаем плавное изменение цвета
 bg.addEventListener('input', bg_color, false);
-
-// Функция регестрации касания на сенсорном экране
-function touchstart(e) {
-}
-
-function touchmove(event) {
-    if (mode == "Eraser") {
-        context.fillStyle = color;
-        context.fillRect(event.offsetX - brush_width / 2, event.offsetY - brush_width / 2, brush_width, brush_width);
-    }
-    // Режим ластика
-    else if (mode == "Marker") {
-        context.fillStyle = bg.value;
-        context.fillRect(event.offsetX - brush_width / 2, event.offsetY - brush_width / 2, brush_width, brush_width);
-    }
-}
 
 function bg_color() {
     context.fillStyle = bg.value;
