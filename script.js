@@ -1,3 +1,9 @@
+let display = 0;
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    display = 'Mobile';
+} else {
+    display = 'Computer';
+}
 let canvas = document.getElementById("canvas");
 let bg = document.getElementById('background_color');
 let context = canvas.getContext("2d");
@@ -20,53 +26,86 @@ canvas.height = canvas.clientHeight;
 context.fillStyle = bg.value;
 context.fillRect(0, 0, canvas.width, canvas.height);
 
-// Добавляем функцию рисования на компьютере
-canvas.onmousedown = (e) => {
-    // Выбираем режим рисования
-    mode = document.getElementById("eraser").textContent;
-    // Выбираем цвет маркера
-    color = document.getElementById("color").value;
-    // Выбираем толщину маркера
-    brush_width = document.getElementById("marker_width").value;
+if (display == 'Computer') {
+    // Добавляем функцию рисования на компьютере
+    canvas.onmousedown = (e) => {
+        // Выбираем режим рисования
+        mode = document.getElementById("eraser").textContent;
+        // Выбираем цвет маркера
+        color = document.getElementById("color").value;
+        // Выбираем толщину маркера
+        brush_width = document.getElementById("marker_width").value;
         canvas.onmousemove = (event) => {
             // Режим маркера
-            if (mode == "Eraser"){
+            if (mode == "Eraser") {
                 context.fillStyle = color;
-                context.fillRect(event.offsetX-brush_width/2, event.offsetY-brush_width/2, brush_width, brush_width);
+                context.fillRect(event.offsetX - brush_width / 2, event.offsetY - brush_width / 2, brush_width, brush_width);
             }
             // Режим ластика
-            else if (mode == "Marker"){
+            else if (mode == "Marker") {
                 context.fillStyle = bg.value;
-                context.fillRect(event.offsetX-brush_width/2, event.offsetY-brush_width/2, brush_width, brush_width);
+                context.fillRect(event.offsetX - brush_width / 2, event.offsetY - brush_width / 2, brush_width, brush_width);
             }
         };
-    // Режим маркера
-    if (mode == "Eraser"){
-        context.fillStyle = color;
-        context.fillRect(e.offsetX-brush_width/2, e.offsetY-brush_width/2, brush_width, brush_width);
-    }
-    // Режим ластика
-    else if (mode == "Marker"){
-        context.fillStyle = bg.value;
-        context.fillRect(event.offsetX-brush_width/2, event.offsetY-brush_width/2, brush_width, brush_width);
-    }
-    canvas.onmouseup = () => {
-        canvas.onmousemove = null;
+        // Режим маркера
+        if (mode == "Eraser") {
+            context.fillStyle = color;
+            context.fillRect(e.offsetX - brush_width / 2, e.offsetY - brush_width / 2, brush_width, brush_width);
+        }
+        // Режим ластика
+        else if (mode == "Marker") {
+            context.fillStyle = bg.value;
+            context.fillRect(e.offsetX - brush_width / 2, e.offsetY - brush_width / 2, brush_width, brush_width);
+        }
+        canvas.onmouseup = () => {
+            canvas.onmousemove = null;
+        };
     };
-};
+}
 
+else if (display == 'Mobile') {
+    canvas.ontouchstart = (e) => {
+        console.log('working');
+        // Режим маркера
+        if (mode == "Eraser") {
+            context.fillStyle = color;
+            context.fillRect(e.offsetX - brush_width / 2, e.offsetY - brush_width / 2, brush_width, brush_width);
+        }
+        // Режим ластика
+        else if (mode == "Marker") {
+            context.fillStyle = bg.value;
+            context.fillRect(e.offsetX - brush_width / 2, e.offsetY - brush_width / 2, brush_width, brush_width);
+        
+        }
+        canvas.ontouchmove = (event) => {
+            // Режим маркера
+            if (mode == "Eraser") {
+                context.fillStyle = color;
+                context.fillRect(event.offsetX - brush_width / 2, event.offsetY - brush_width / 2, brush_width, brush_width);
+            }
+            // Режим ластика
+            else if (mode == "Marker") {
+                context.fillStyle = bg.value;
+                context.fillRect(event.offsetX - brush_width / 2, event.offsetY - brush_width / 2, brush_width, brush_width);
+            }
+        };
+        canvas.ontouchend = () => {
+            canvas.onmousemove = null;
+        };
+    }
+}
 // Отчистка холста
-function clear(){
+function clear() {
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.fillStyle = bg.value;
     context.fillRect(0, 0, canvas.width, canvas.height);
 }
 // Меняем режим рисования для понимания пользователя
-function eraser(){
-    if (document.getElementById("eraser").textContent == "Eraser"){
+function eraser() {
+    if (document.getElementById("eraser").textContent == "Eraser") {
         mode = document.getElementById("eraser").textContent = "Marker";
     }
-    else{
+    else {
         mode = document.getElementById("eraser").textContent = "Eraser";
     }
 }
@@ -74,20 +113,36 @@ function eraser(){
 // Делаем плавное изменение цвета
 bg.addEventListener('input', bg_color, false);
 
-function bg_color(){
+// Функция регестрации касания на сенсорном экране
+function touchstart(e) {
+}
+
+function touchmove(event) {
+    if (mode == "Eraser") {
+        context.fillStyle = color;
+        context.fillRect(event.offsetX - brush_width / 2, event.offsetY - brush_width / 2, brush_width, brush_width);
+    }
+    // Режим ластика
+    else if (mode == "Marker") {
+        context.fillStyle = bg.value;
+        context.fillRect(event.offsetX - brush_width / 2, event.offsetY - brush_width / 2, brush_width, brush_width);
+    }
+}
+
+function bg_color() {
     context.fillStyle = bg.value;
     context.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 // Корректируем значение толщины маркера если оно неположительное
-function width_marker_correction(){
-    if (document.getElementById("marker_width").value <= 0){
+function width_marker_correction() {
+    if (document.getElementById("marker_width").value <= 0) {
         document.getElementById("marker_width").value = -brush_width;
     }
 }
 
 // Сохраняем рисунок
-document.getElementById("save_button").onclick = function(){
+document.getElementById("save_button").onclick = function () {
     let image = canvas.toDataURL("image/jpg");
     this.href = image;
 }
