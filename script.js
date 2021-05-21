@@ -19,6 +19,7 @@ correctarray[0].width = document.getElementById('eraser').width;
 correctarray[1].height = document.getElementById('clear_button').height;
 correctarray[1].width = document.getElementById('clear_button').width;
 
+// Корректируем размеры холста
 canvas.width = canvas.clientWidth;
 canvas.height = canvas.clientHeight;
 
@@ -75,24 +76,25 @@ else if (display == 'Mobile') {
         // Режим маркера
         if (mode == "Eraser") {
             context.fillStyle = color;
-            context.fillRect(e.touches[0].pageX, e.touches[0].pageY - brush_width / 2, brush_width, brush_width);
+            console.log(canvas.getBoundingClientRect().left)
+            context.fillRect(e.touches[0].pageX - canvas.getBoundingClientRect().left - brush_width / 2, e.touches[0].pageY - canvas.getBoundingClientRect().top - brush_width / 2, brush_width, brush_width);
         }
         // Режим ластика
         else if (mode == "Marker") {
             context.fillStyle = bg.value;
-            context.fillRect(e.touches[0].pageX - brush_width / 2, e.touches[0].pageY - brush_width / 2, brush_width, brush_width);
+            context.fillRect(e.touches[0].pageX - canvas.getBoundingClientRect().left - brush_width / 2, e.touches[0].pageY - canvas.getBoundingClientRect().top - brush_width / 2, brush_width, brush_width);
         
         }
         canvas.addEventListener('touchmove', canvas.touchmove = (event) => {
             // Режим маркера
             if (mode == "Eraser") {
                 context.fillStyle = color;
-                context.fillRect(event.touches[0].pageX - brush_width / 2, event.touches[0].pageY - brush_width / 2, brush_width, brush_width);
+                context.fillRect(event.touches[0].pageX - canvas.getBoundingClientRect().left - brush_width / 2, event.touches[0].pageY - canvas.getBoundingClientRect().top - brush_width / 2, brush_width, brush_width);
             }
             // Режим ластика
             else if (mode == "Marker") {
                 context.fillStyle = bg.value;
-                context.fillRect(event.touches[0].pageX - brush_width / 2, event.touches[0].pageY - brush_width / 2, brush_width, brush_width);
+                context.fillRect(event.touches[0].pageX - canvas.getBoundingClientRect().left - brush_width / 2, event.touches[0].pageY - canvas.getBoundingClientRect().top - brush_width / 2, brush_width, brush_width);
             }
         }, false);
         canvas.addEventListener('touchend', canvas.touchend = () => {
