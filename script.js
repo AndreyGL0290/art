@@ -134,7 +134,7 @@ function width_marker_correction() {
 }
 
 // Сохраняем рисунок путем переноса заднего фона и самого рисунка на третий холст, который не виден юзеру
-function save(){
+function save() {
     let canvas_save = document.getElementById("canvas_save");
     let context_save = canvas_save.getContext("2d");
     canvas_save.width = canvas_save.clientWidth;
