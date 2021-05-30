@@ -10,7 +10,9 @@
 <body>
     <h1 style="color:#fea82f; font-family:roboto; font-weight:solid;">Рисуй!</h1>
     <div id="canvas_container">
-        <canvas id="canvas"></canvas>
+        <canvas class="canvas" id="canvas" style="z-index:2;"></canvas>
+        <canvas class="canvas" id="canvas_bg" style="z-index:1;"></canvas>
+        <canvas class="canvas" id="canvas_save" style="z-index:0;"></canvas>
     </div>
     <div id="tools_bar">
         <div style="display:inline-block;">
@@ -34,7 +36,7 @@
             <div class="correction">g</div>
         </div>
         <div style="display:inline-block;">
-            <a download="myImage.jpg" id="save_button" href="" style="margin-left: 20px; display:inline-block;">Сохранить</a>
+            <a download="myImage.jpg" id="save_button" href="" style="margin-left: 20px; display:inline-block;" onclick="save();">Сохранить</a>
             <div class="correction">g</div>
         </div>
     </div>

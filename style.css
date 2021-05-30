@@ -1,50 +1,62 @@
 html{
-    text-align:center;
-    width:100%;
-    height:100%;
-    background-color:#fcecdd;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    background-color: #fcecdd;
 }
+
 body{
     -moz-user-select: none;
 	-khtml-user-select: none;
 	user-select: none;
     overflow: hidden;
-    width:100%;
-    height:100%;
-    padding:0;
-    margin:0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
 }
+
 a{
-    color:#fea82f;
-    font-family:roboto;
-    font-weight:bold;
-    font-size:2vh;
-    text-decoration:none;
+    color: #fea82f;
+    font-family: roboto;
+    font-weight: bold;
+    font-size: 2vh;
+    text-decoration: none;
 }
+
 input{
-    width:50px;
-    height:20px;
+    width: 50px;
+    height: 20px;
 }
 
 #canvas_container{
-    width:90%;
-    height:80%;
-    margin:auto;
-    border:black 5px solid;
-    position:relative;
+    width: 90%;
+    height: 80%;
+    margin: auto;
+    border: black 5px solid;
+    position: relative;
 }
-#canvas{
+
+.canvas{
     touch-action: none;
-    width:100%;
-    height:100%;
-    background-color:#ffc288;
-    cursor:cell;
+    width: 100%;
+    height: 100%;
+    background-color: #ffc288;
+    cursor: cell;
+    position: absolute; 
+    left: 0;
 }
+
+#canvas{
+    background-color: rgba(0, 0, 0, 0);
+}
+
 #tools_bar{
-    width:100%;
+    width: 100%;
 }
+
 .correction{
-    display:block;
-    text-align:center;
-    color:#fcecdd;
+    display: block;
+    text-align: center;
+    color: #fcecdd;
 }
