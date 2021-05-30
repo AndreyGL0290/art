@@ -1,9 +1,20 @@
 let display = 0;
+let image = 0;
+
+// Холст для рисования
 let canvas = document.getElementById("canvas");
-let canvas_bg = document.getElementById("canvas_bg");
-let bg = document.getElementById('background_color');
 let context = canvas.getContext("2d");
+
+// Холст для заднего фона
+let canvas_bg = document.getElementById("canvas_bg");
 let context_bg = canvas_bg.getContext("2d");
+
+// Холст для сохранения картинки
+let canvas_save = document.getElementById("canvas_save");
+let context_save = canvas_save.getContext("2d");
+
+// Дополнительные параметры
+let bg = document.getElementById('background_color');
 let color = "black";
 let brush_width = document.getElementById("marker_width").value;
 let mode = "Marker";
@@ -135,14 +146,12 @@ function width_marker_correction() {
 
 // Сохраняем рисунок путем переноса заднего фона и самого рисунка на третий холст, который не виден юзеру
 function save() {
-    let canvas_save = document.getElementById("canvas_save");
-    let context_save = canvas_save.getContext("2d");
     canvas_save.width = canvas_save.clientWidth;
     canvas_save.height = canvas_save.clientHeight;
     // Переносим на холст сохранения холст заднего фона
     context_save.drawImage(canvas_bg, 0, 0, canvas.width, canvas.height);
     // Переносим на холст сохранения холст рисования
     context_save.drawImage(canvas, 0, 0, canvas.width, canvas.height);
-    let image = canvas_save.toDataURL("image/jpg");
+    image = canvas_save.toDataURL("image/jpg");
     document.getElementById("save_button").href = image;
 }
